@@ -49,3 +49,23 @@ The application uses a simple data model with meaningful identifiers:
    - Grade level
 
 All data is stored in memory, which means data will be reset when the server restarts.
+
+## Testing
+
+From the repository root, install the dependencies and run the backend tests:
+
+```bash
+python -m pip install -r requirements.txt
+python -m pytest tests/ -v
+```
+
+To run just the API test module:
+
+```bash
+python -m pytest tests/test_app.py -v
+```
+
+Tests live in `tests/` and use FastAPI's `TestClient`, so no running Uvicorn
+server is needed. Each test receives an isolated copy of the in-memory activity
+data. Coverage includes activity listing, the frontend redirect, signup,
+unregistration, duplicate signup rejection, and invalid requests.
